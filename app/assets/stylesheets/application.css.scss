@@ -36,7 +36,7 @@ body {
 
 }
 body {
-    background-image: image-url("thumb.jpg");
+    background-image: asset-data-url("thumb.jpg");
     background-size: cover;
 
 }
