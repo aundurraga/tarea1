@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+
     <title>Tarea1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,39 +11,24 @@
   </head>
 
   <body>
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-brand">
 
-
-      <span class="navbar-burger burger" data-target="navbarMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-      </div>
-      <div id="navbarMenu" class="navbar-menu">
-        <div class="mx-auto mt-5" style="width: 400px">
-
-          <div class="form-group">
-
-          </div>
-
-      </div>
-        <div class="navbar-end">
-
-          <a class="navbar-item is-active">
-            <%= form_with(url: search_path, method: 'get', local: true) do %>
-            <%= label_tag :person, 'Buscar persona por nombre '%>
+  <nav class="navbar navbar-expand-sm bg-light">
+    <div class="navbar-end">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="navbar-item is-active">
+          <%= form_with(url: search_path, method: 'get', local: true) do %>
+            <%= label_tag :person, 'Buscar'%>
             <%= text_field_tag :person, nil, placeholder: 'Eg. Walter', class: 'form-control' %>
             <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
-            <% end %>
-          </a>
+          <% end %>
+        </a>
+      </li>
 
-        </div>
-      </div>
+    </ul>
     </div>
   </nav>
+
 
     <%= yield %>
   </body>
