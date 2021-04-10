@@ -36,8 +36,8 @@ body {
 
 }
 body {
-    background-image: url("thumb.jpeg");
-    background-size: cover;
+    background-image:  url(<%= asset_path 'thumb.jpg' %>)
+background-size: cover;
 
 }
 
