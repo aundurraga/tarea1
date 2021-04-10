@@ -1,0 +1,115 @@
+<% require 'date'%>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cards List - Bulma Templates</title>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <link rel="stylesheet" href="../css/cards.css">
+</head>
+
+
+<body>
+
+
+<!-- START NAV -->
+
+<!-- END NAV -->
+
+<div class="container">
+
+  <div class="section">
+
+    <div class="columns">
+      <div class="column has-text-centered">
+        <h1 class="title" style="color: ghostwhite;"></h1><br>
+
+      </div>
+    </div>
+    <div id="app" class="row columns is-multiline">
+      <div v-for="card in cardData" key="card.id" class="column is-6">
+        <div class="card large">
+          <div class="card-image">
+            <figure class="image is-20by8">
+
+              <% if @episode['series']=="Breaking Bad"%>
+                <%= image_tag("unnamed.jpeg") %>
+              <% else%>
+                <%= image_tag("better_call.jpg") %>
+              <% end%>
+
+
+            </figure>
+          </div>
+          <div class="card-content">
+
+            <div class="media-content">
+
+
+              <p class="title is-6">
+
+                <a class="subtitle is-6"> Nombre:  <%= @episode['title'] %></p>
+
+              <p class="title is-6">
+                Temporada:
+                <a class="subtitle is-6">   <%= @episode['season'] %></p>
+              <p class="title is-6">
+                Episodio:
+                <a class="subtitle is-6">   <%= @episode['episode'] %></p>
+              <p class="title is-6">
+                Fecha de Estreno:
+                <a class="subtitle is-6">   <%=Date.parse(@episode['air_date'] ).strftime("%d-%m-%Y")%></p>
+              <p class="title is-6">
+                Personajes:
+              <% @episode['characters'].each do |charac|%>
+                <a class="subtitle is-6"> - <%= link_to charac, show_char_path(name:charac), method: 'get' %>
+              <% end %> </a>
+
+
+
+
+
+
+
+
+
+
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+
+      <p>
+        <strong>Tarea 1 IIC3103</strong>.
+
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/cardsData.js"></script>
+
+<!-- Using Vue to populate cards to reduce redundant code -->
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            cardData: cardsData
+        }
+    })
+
+</script>
+</body>

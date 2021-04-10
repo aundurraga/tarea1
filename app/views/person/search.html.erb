@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-6">
+      
+      </dl>
+    </div>
+
+  </div>
+</div>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cards List - Bulma Templates</title>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <link rel="stylesheet" href="../css/cards.css">
+</head>
+
+
+<body>
+
+
+<!-- START NAV -->
+
+<!-- END NAV -->
+
+<div class="container">
+
+  <div class="section">
+
+    <div class="columns">
+      <div class="column has-text-centered">
+        <h1 class="title" style="color: ghostwhite;"></h1><br>
+
+      </div>
+    </div>
+    <div id="app" class="row columns is-multiline">
+      <div v-for="card in cardData" key="card.id" class="column is-12">
+        <div class="card large">
+          
+          
+              <%if @personas.empty? %>
+            <div class="card-content">
+
+              <div class="media-content">
+                <p class="title is-4 no-padding">No existe ese personaje! Inténtalo nuevamente</p>
+              <%else %>
+            <div class="card-content">
+
+              <div class="media-content">
+                
+                  <% @personas.each do |person|%>
+
+                    
+                    <p class="title is-4 no-padding"><%= link_to person['name'], show_path(person), method:'get' %></p>
+
+
+                  <% end%>
+              <% end%>
+             
+
+              
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+
+          <p>
+            <strong>Tarea 1 IIC3103</strong>.
+
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/cardsData.js"></script>
+
+    <!-- Using Vue to populate cards to reduce redundant code -->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                cardData: cardsData
+            }
+        })
+
+    </script>
+</body>
